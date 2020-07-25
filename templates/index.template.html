@@ -1,0 +1,20 @@
+{%extends 'base.template.html' %}
+
+{%block title%}Volunteer List{%endblock%}
+
+{%block content%}
+<h2>Activity</h2>
+
+<a href="{{url_for('login')}}" class="btn btn-primary">Login</a>
+<a href="{{url_for('register')}}" class="btn btn-primary">Register</a>
+
+<ul class="list-group mt-3">
+{%for a in activity %}
+    <li class="list-group-item">
+        {{a.prog_name}} 
+    </li>
+{%endfor%}
+
+</ul>
+
+{%endblock%}
