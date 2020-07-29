@@ -41,17 +41,17 @@
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="index.html">Home</a></li>
-						<li><a href="about.html">Volunteer</a></li>
-						<li><a href="causes.html">Donate</a></li>
-						<li><a href="events.html">Events</a></li>
-						<li class="menu-has-children" href="{{ url_for('login') }}">Join us</a>
+						<li class="menu-active"><a href="{{ url_for('index') }">Home</a></li>
+						<li><a href="{{ url_for('show_volunteer') }">Volunteer</a></li>
+						<li><a href="{{ url_for('show_organisations') }}">Organisations</a></li>
+						<li><a href="{{ url_for('donate_form') }}"></a></li>
+						<li class="menu-has-children"><a href="{{ url_for('login') }}">Join us</a>
 							<ul>
 								<li><a href="{{ url_for('login') }}">Log In</a></li>
 								<li><a href="{{ url_for('register') }}">Register</a></li>
 							</ul>
 						</li>
-						<li><a href="contact.html">About Us</a></li>
+						<li><a href="{{ url_for('about_us') }}">About Us</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
 			</div>
