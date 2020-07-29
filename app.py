@@ -53,13 +53,13 @@ def about_us():
 def show_organisations():
     return render_template('organisations.template.html')
 
-# Volunteer Activities
-@app.route('/volunteer')
+# Volunteer activities summary
+@app.route('/volunteer/details')
 def show_volunteer():
     return render_template('volunteer.template.html')
 
 # Activity details
-@app.route('/details/<activity_id>')
+@app.route('/volunteer/details/<activity_id>')
 def show_activity_details():
     return render_template('activity_details.template.html')
 
@@ -68,11 +68,15 @@ def show_activity_details():
 def show_activity_posted():
     return render_template('activity_posted.template.html')
 
-# Activity Summary
+# Activity posted Summary
 @app.route('/posted/<activity_id>/summary')
 def show_activity_summary():
     return render_template('activity_summary.template.html')
 
+# Donate form
+@app.route('/donate')
+def donate_form():
+    return render_template('make_donation.template.html')
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':

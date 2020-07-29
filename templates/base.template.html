@@ -37,14 +37,14 @@
 		<div class="container">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="index.html"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="" title="" /></a>
+					<a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="" title="" /></a>
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="{{ url_for('index') }">Home</a></li>
-						<li><a href="{{ url_for('show_volunteer') }">Volunteer</a></li>
+						<li class="menu-active"><a href="{{ url_for('index') }}">Home</a></li>
+						<li><a href="{{ url_for('show_volunteer') }}">Volunteer</a></li>
 						<li><a href="{{ url_for('show_organisations') }}">Organisations</a></li>
-						<li><a href="{{ url_for('donate_form') }}"></a></li>
+						<li><a href="{{ url_for('donate_form') }}">Donate</a></li>
 						<li class="menu-has-children"><a href="{{ url_for('login') }}">Join us</a>
 							<ul>
 								<li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -89,19 +89,18 @@
 						<img class="img-fluid w-100" src="{{ url_for('static', filename='img/home-banner-img.jpg') }}" alt="">
 					</div>
 					<div class="form-wrap">
-						<p class="mb-20 text-white">Enter Monthly Donation Amount</p>
+						<p class="mb-20 text-white">Support us with your donations</p>
 						<form class="form" role="form" autocomplete="off">
 							<div class="row">
 								<div class="col-md-7 wrap-left donation-input">
 									<div class="form-group">
-										<input type="text" placeholder="125.00" onfocus="this.placeholder = ''" onblur="this.placeholder = '125.00'"
-										 class="form-control">
-										<span class="fs-14">USD</span>
+										<input type="text" placeholder="20" class="form-control">
+										<span class="fs-14">SGD</span>
 									</div>
 								</div>
 								<div class="col-md-5 wrap-right">
 									<div class="input-group dates-wrap">
-										<button type="submit" class="primary-btn white">Donate Now</button>
+										<button type="button" class="primary-btn white" onclick="location.href='{{ url_for('donate_form') }}'">Donate Now</button>
 									</div>
 								</div>
 							</div>
