@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import pymongo
-import bcrypt
 from dotenv import load_dotenv
 from bson import ObjectId
 import os
