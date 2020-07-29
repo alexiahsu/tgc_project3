@@ -48,10 +48,15 @@ def register():
 def about_us():
     return render_template('about_us.template.html')
 
-#Participating Organisation List
+# Participating Organisation List
 @app.route('/organisations')
 def show_organisations():
     return render_template('organisations.template.html')
+
+# Volunteer Activities
+@app.route('/volunteer')
+def show_volunteer():
+    return render_template('volunteer.template.html')
 
 # Activity details
 @app.route('/details/<activity_id>')
