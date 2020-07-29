@@ -3,6 +3,59 @@
 {%block title%}Volunteer List{%endblock%}
 
 {%block content%}
+
+  <!-- start Banner Area -->
+	<section class="home-banner-area relative">
+		<div class="container-fluid">
+			<div class="row  d-flex align-items-center justify-content-center">
+				<div class="header-left col-lg-5 col-md-6 ">
+					<h1>
+						New way <br>
+						to give back
+					</h1>
+					<p class="pt-20 pb-20">
+						If you are looking at blank cassettes on the web, you may be very confused at the difference in price You may see
+						some for as low as each.
+					</p>
+					<div class="vdo-section">
+						<a href="https://www.youtube.com/watch?v=p29dKpHnPjQ" class="single-charity">
+							<img src="{{ url_for('static', filename='img/video-icon.png') }}" alt="">
+						</a>
+						<span>
+							<a href="https://www.youtube.com/watch?v=p29dKpHnPjQ" class="single-charity">
+								Watch our intro video
+							</a>
+						</span>
+					</div>
+				</div>
+				<div class="col-lg-7 col-md-6 col-sm-8 header-right">
+					<div class="owl-carousel owl-banner">
+						<img class="img-fluid w-100" src="{{ url_for('static', filename='img/home-banner-img.jpg') }}" alt="">
+						<img class="img-fluid w-100" src="{{ url_for('static', filename='img/home-banner-img.jpg') }}" alt="">
+					</div>
+					<div class="form-wrap">
+						<p class="mb-20 text-white">Support us with your donations</p>
+						<form class="form" role="form" autocomplete="off">
+							<div class="row">
+								<div class="col-md-7 wrap-left donation-input">
+									<div class="form-group">
+										<input type="text" placeholder="20" onfocus="this.placeholder = ''" onblur="this.placeholder = '20'"class="form-control">
+										<span class="fs-14">SGD</span>
+									</div>
+								</div>
+								<div class="col-md-5 wrap-right">
+									<div class="input-group dates-wrap">
+										<button type="button" class="primary-btn white" onclick="location.href='{{ url_for('donate_form') }}'">Donate Now</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
 	<!-- Start Causes Area -->
 	<section class="causes-area section-gap">
 		<div class="container">

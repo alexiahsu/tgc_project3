@@ -1,5 +1,25 @@
 {%extends 'base.template.html'%}
 
 {%block content%}
-<h1>Make donation</h1>
+<!-- Start Donations Form -->
+<section class="home-banner-area relative" style="padding-top:70px">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 section-title">
+                <h2>Make a Donation</h2>
+                <form method="POST">
+                    <div class="form-group">
+                        <label>Full Name (as per NRIC)</label>
+                        <input type="text" class="form-control" name="donor_name"/><br/>
+                        <label>Donation Amount:</label>
+                        <input type="text" class="form-control" name="donor_amount"/><br/>
+                        <label>Payment Method:</label>
+                        <input type="text" class="form-control" name="payment_method"/><br/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
 {%endblock%}
