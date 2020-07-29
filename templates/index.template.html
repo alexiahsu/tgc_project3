@@ -8,11 +8,14 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-7 section-title">
-					<h2>Our Major Causes</h2>
-					<p>
-						The French Revolution constituted for the conscience of the dominant aristocratic class a fall from innocence the
-						natural chain of events.
-					</p>
+                    <h2>Our Major Causes</h2>
+                    <u>
+                        {%for v in vol%}
+                            <li>
+                                {{v.prog_name}}
+                            </li>
+                        {%endfor%}
+                    </u>
 				</div>
 			</div>
 			<div class="row">

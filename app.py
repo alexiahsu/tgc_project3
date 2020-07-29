@@ -29,7 +29,8 @@ app.secret_key = SESSION_KEY
 
 @app.route('/')
 def index():
-    return render_template('index.template.html')
+    vol = client[DB_NAME].volunteer_prog.find()
+    return render_template('index.template.html', vol=vol)
 
 # Login
 
