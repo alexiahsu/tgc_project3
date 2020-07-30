@@ -1,21 +1,26 @@
 {% extends 'base.template.html' %}
 {% block content %} 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <form method=POST action="{{ url_for('register') }}">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="pass" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Register</button>
-            </form>
-            <br>
+<section class="home-banner-area relative" style="padding-top:70px">
+    <div class="container">
+        <div class="text">
+            <h2>Join our community to host your volunteer activities and receive grants from us!</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-md-offset-4">
+                <form method=POST action="{{ url_for('register') }}">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Username"><br/>
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password"><br/>
+                    <label>Organisation Name</label>
+                    <input type="text" class="form-control" name="org_name" placeholder="Organisation Name"><br/>
+                    <label>Organisation Description</label>
+                    <textarea name="org_desc" placeholder="Describe your organisation's social cause"></textarea>
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </form>
+                <br>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
