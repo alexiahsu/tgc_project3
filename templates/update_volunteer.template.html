@@ -18,7 +18,7 @@
                 <input type="number" min="0" name="num_volunteer_req" class="form-control" required/><br/>
                 <label>Organisation</label>
                 <select class="custom-select mr-sm-2" name="prog_org">
-                    {% for u in users %}
+                    {% for a in activity %}
                         <option value="{{users._id}}">{{users.org_name}}</option>
                     {%endfor%}
                 </select><br/><br/>
