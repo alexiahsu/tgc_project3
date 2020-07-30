@@ -79,10 +79,33 @@ def show_activity_posted():
 def show_activity_summary():
     return render_template('activity_summary.template.html')
 
-# Donate form
+#Donate form = input
 @app.route('/donate')
-def donate_form():
+def show_donate_form():
     return render_template('make_donation.template.html')
+
+# Donate form = POST
+@app.route('/donate', methods=['POST'])
+def donate_form():
+    donor_name = request.form.get('donor_name')
+    donor_dob = request.form.get('donor_dob')
+    donor_email = request.form.get('donor_email')
+    donor_amount = request.form.get('donor_amount')
+    donor_phone = request.form.get('donor_phone')
+    payment_method = request.form.get('payment_method')
+    donor_memo = request.form.get('donor_message')
+
+    client[DB_NAME].donation.insert_one({
+    'donor_name': donor_name,
+    'donor_dob': datetime.datetime.strptime(donor_dob, "%Y-%m-%d"),
+    'donor_email': donor_email,
+    'donor_phone': donor_phone,
+    'donor_amount': donor_amount,
+    'payment_method': payment_method,
+    'donor_memo': donor_memo
+    })
+    flash(f'Thank you for donating {donor_amount} to us!')
+    return render_template('index.template.html')
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
