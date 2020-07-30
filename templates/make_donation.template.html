@@ -15,16 +15,18 @@
                         <input type="date" name="donor_dob" class="form-control" required/><br/>
                         <label>Email Address</label>
                         <input type="email" name="donor_email" class="form-control" required/><br/>
+                        <label>Contact Number</label>
+                        <input type="number" name="donor_phone" class="form-control" required/><br/>
                         <label>Donation Amount:</label>
-                        <input type="number" class="form-control" name="donor_amount" required/><br/>
+                        <input type="number" pattern="^\d*(\.\d{0,2})?$" min="0" step="0.01" class="form-control" name="donor_amount" required/><br/>
                         <label>Payment Mode</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="payment_method">
                             <option selected>Select to see instructions</option>
                             <option value="1">Wire Transfer</option>
                             <option value="2">PayNow/PayLah</option>
                         </select><br/>
                         <label>Remarks</label>
-                        <textarea name="donor_message" class="form-control" placeholder="You may share your wishlist with us!"></textarea>
+                        <textarea name="donor_message" class="form-control" placeholder="You may share your wishlist with us!"></textarea><br/>
                         <button type="submit" class="btn btn-primary">Make your donation!</button>
                     </div>
                 </form>
