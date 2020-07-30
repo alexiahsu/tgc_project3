@@ -1,5 +1,52 @@
 {%extends 'base.template.html'%}
 
 {%block content%}
-<h1>Activity {{name}}</h1>
+<div class="row">
+    <div class="col-lg-4 col-md-6">
+        <div class="single-cause">
+            <div class="top">
+                <div class="thumb">
+                    <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
+                </div>
+                    <h3>{{vol.prog_name}}</h3>
+                <p class="text">
+                    {{vol.prog_desc}}
+                </p>
+            </div>
+            <div class="middle">
+                <div class="d-flex">
+                    <div class="mr-50">
+                        <h5><span class="counter">{{vol.duration}}</span></h5>
+                        <p>Duration</p>
+                    </div>
+                    <div class="mr-50">
+                        <h5><span class="counter">{{vol.num_volunteer_req}}</span></h5>
+                        <p>Volunteers Required</p>
+                    </div>
+                    <div class="">
+                        <h5><span class="counter">{{vol.vol_date}}</span></h5>
+                        <p>Date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <form method="POST">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" name="vol_name" required/><br/>
+                <label>Date of Birth</label>
+                <input type="date" name="vol_dob" class="form-control" required/><br/>
+                <label>Email Address</label>
+                <input type="email" name="vol_email" class="form-control" required/><br/>
+                <label>Contact Number</label>
+                <input type="tel" name="vol_phone" class="form-control" required/><br/>
+                <label>Tell us about yourself</label>
+                <textarea name="vol_desc" class="form-control" placeholder="Tell us why you want to join this event!"></textarea><br/><br/>
+                <a href="{{ url_for('show_volunteer') }}">Click to register!</a>
+            </div>
+        </form>
+    </div>
+</div>
 {%endblock%}

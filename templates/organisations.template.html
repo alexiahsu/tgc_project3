@@ -1,5 +1,23 @@
 {%extends 'base.template.html'%}
 
 {%block content%}
-<h1>Organisations</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            {% for u in users%}
+            <div class="single-cause">
+                <div class="top">
+                    <div class="thumb">
+                        <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
+                    </div>
+                        <h3>{{u.org_name}}</h3>
+                    <p class="text">
+                        {{u.org_desc}}
+                    </p>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
 {%endblock%}
