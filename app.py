@@ -66,7 +66,8 @@ def create_register():
 # Participating Organisation List
 @app.route('/organisations')
 def show_organisations():
-    return render_template('organisations.template.html')
+    users = client[DB_NAME].users.find()
+    return render_template('organisations.template.html', users=users)
 
 # Volunteer activities summary
 @app.route('/volunteer/details/')
@@ -99,24 +100,33 @@ def create_volunteer():
     flash(f'Your event has been created!')
     return render_template('volunteer.template.html')
 
-# Activity details
+# Show individual volunteers
 @app.route('/volunteer/details/<activity_id>')
 def show_activity_details(activity_id):
     vol = client[DB_NAME].volunteer_prog.find_one({
         "_id": ObjectId(activity_id)
     })
-    vol_listings = client[DB_NAME].volunteer_prog.find()
-    return render_template('activity_details.template.html', vol=vol, vol_listings=vol_listings)
+    return render_template('activity_details.template.html', vol=vol)
 
-# Activity posted
-@app.route('/posted/<activity_id>')
-def show_activity_posted():
-    return render_template('activity_posted.template.html')
-
-# Activity posted Summary
-@app.route('/posted/<activity_id>/summary')
-def show_activity_summary():
-    return render_template('activity_summary.template.html')
+# Post individual volunteers
+@app.route('/volunteer/details/<activity_id>', methods=['POST'])
+def process_activity_volunteer(activity_id):
+    vol_name= request.form.get('vol_name')
+    vol_dob = request.form.get('vol_dob')
+    vol_email = request.form.get('vol_email')
+    vol_phone = request.form.get('vol_phone')
+    vol_desc = request.form.get('vol_desc')
+    vol_activity = activity_id
+    client[DB_NAME].volunteer_register.insert_one({
+    'vol_name': vol_name,
+    'vol_dob': datetime.datetime.strptime(vol_dob, "%Y-%m-%d"),
+    'vol_desc': vol_desc,
+    'vol_email': vol_email,
+    'vol_activity': vol_activity,
+    'vol_phone': vol_phone
+    })
+    flash(f'You have registered for the event!')
+    return render_template('volunteer.template.html')
 
 #Donate form
 @app.route('/donate')

@@ -1590,7 +1590,6 @@ h1, h2, h3, h4, h5, h6 {
   top: 100%;
   left: 0;
   z-index: 99;
-  background-color: #333;
  }
 
 .nav-menu li {
@@ -1606,7 +1605,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu ul ul {
   top: 0;
-  left: 100%; }
+  left: 100%; 
+  background-color: #333;
+}
 
 .nav-menu ul li {
   min-width: 180px;
@@ -1690,7 +1691,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer; }
 
 #mobile-nav-toggle i {
-  color: #fff;
+  color: #333;
   font-weight: 900; }
 
 @media (max-width: 960px) {
@@ -1721,7 +1722,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative; }
 
 #mobile-nav ul li a {
-  color: #fff;
+  color: #333;
   font-size: 13px;
   text-transform: uppercase;
   overflow: hidden;
@@ -1734,7 +1735,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700; }
 
 #mobile-nav ul li a:hover {
-  color: #fff; }
+  color: #333; }
 
 #mobile-nav ul li li {
   padding-left: 30px; }
@@ -1745,7 +1746,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 99;
   padding: 15px;
   cursor: pointer;
-  color: #fff; }
+  color: #333; }
 
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
   color: #61c524; }
@@ -1774,7 +1775,7 @@ body.mobile-nav-active #mobile-nav {
   left: 0; }
 
 body.mobile-nav-active #mobile-nav-toggle {
-  color: #fff; }
+  color: #333; }
 
 .home-banner-area {
   background: #fff;
@@ -1844,7 +1845,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     .event-area .owl-nav .lnr-arrow-up:hover,
     .event-area .owl-nav .lnr-arrow-down:hover {
       background: #61c524;
-      color: #ffffff; }
+      color: #333; }
   .home-banner-area .owl-nav .lnr-arrow-down,
   .condition-area .owl-nav .lnr-arrow-down,
   .event-area .owl-nav .lnr-arrow-down {
