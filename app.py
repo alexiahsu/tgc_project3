@@ -29,8 +29,8 @@ app.secret_key = SESSION_KEY
 
 @app.route('/')
 def index():
-    vol = client[DB_NAME].volunteer_prog.find()
-    return render_template('index.template.html', vol=vol)
+    vol_listings = client[DB_NAME].volunteer_prog.find().limit(1)
+    return render_template('index.template.html', vol_listings=vol_listings)
 
 # Login
 
@@ -55,14 +55,19 @@ def show_organisations():
     return render_template('organisations.template.html')
 
 # Volunteer activities summary
-@app.route('/volunteer/details')
+@app.route('/volunteer/details/')
 def show_volunteer():
-    return render_template('volunteer.template.html')
+    vol_listings = client[DB_NAME].volunteer_prog.find()
+    return render_template('volunteer.template.html', vol_listings=vol_listings)
 
 # Activity details
 @app.route('/volunteer/details/<activity_id>')
-def show_activity_details():
-    return render_template('activity_details.template.html')
+def show_activity_details(activity_id):
+    vol = client[DB_NAME].volunteer_prog.find_one({
+        "_id": ObjectId(activity_id)
+    })
+    vol_listings = client[DB_NAME].volunteer_prog.find()
+    return render_template('activity_details.template.html', vol=vol, vol_listings=vol_listings)
 
 # Activity posted
 @app.route('/posted/<activity_id>')
