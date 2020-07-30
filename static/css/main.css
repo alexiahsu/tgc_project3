@@ -1589,7 +1589,9 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
   top: 100%;
   left: 0;
-  z-index: 99; }
+  z-index: 99;
+  background-color: #333;
+ }
 
 .nav-menu li {
   position: relative;
@@ -1637,7 +1639,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 6px 10px;
   text-decoration: none;
   display: inline-block;
-  color: #fff;
+  color: #333;
   font-weight: 500;
   font-size: 13px;
   text-transform: uppercase;
@@ -1775,7 +1777,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff; }
 
 .home-banner-area {
-  background: #fff; }
+  background: #fff;
+ }
   @media (max-width: 1024px) {
     .home-banner-area {
       margin-top: 66px; } }
