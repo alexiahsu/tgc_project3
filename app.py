@@ -38,16 +38,30 @@ def index():
 def login():
     return render_template('login.template.html')
 
-# Register
+# Register page
 
 @app.route('/register')
 def register():
     return render_template('register.template.html')
 
-# About us
-@app.route('/about-us')
-def about_us():
-    return render_template('about_us.template.html')
+# Register input
+@app.route('/register', methods=['POST'])
+def create_register():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    org_email = request.form.get('org_email')
+    org_name = request.form.get('org_name')
+    org_desc = request.form.get('org_desc')
+
+    client[DB_NAME].users.insert_one({
+        'username': username,
+        'password': password,
+        'org_email': org_email,
+        'org_name': org_name,
+        'org_desc': org_desc
+    })
+    flash(f'Thank you for registering with us!')
+    return render_template('login.template.html')
 
 # Participating Organisation List
 @app.route('/organisations')
@@ -59,6 +73,31 @@ def show_organisations():
 def show_volunteer():
     vol_listings = client[DB_NAME].volunteer_prog.find()
     return render_template('volunteer.template.html', vol_listings=vol_listings)
+
+# Create volunteer activity
+@app.route('/volunteer/create')
+def create_volunteer_form():
+    users = client[DB_NAME].users.find_one()
+    return render_template('create_volunteer.template.html', users=users)
+
+@app.route('/volunteer/create', methods=['POST'])
+def create_volunteer():
+    prog_name = request.form.get('prog_name')
+    prog_desc = request.form.get('prog_desc')
+    prog_org = request.form.get('prog_org')
+    duration = request.form.get('duration')
+    num_volunteer_req = request.form.get('num_volunteer_req')
+    prog_date = request.form.get('prog_date')
+    client[DB_NAME].donation.insert_one({
+        'prog_name': prog_name,
+        'prog_date': datetime.datetime.strptime(prog_date, "%Y-%m-%d"),
+        'prog_desc': prog_desc,
+        'duration': duration,
+        'num_volunteer_req': num_volunteer_req,
+        'prog_org': prog_org
+    })
+    flash(f'Your event has been created!')
+    return render_template('volunteer.template.html')
 
 # Activity details
 @app.route('/volunteer/details/<activity_id>')
@@ -79,12 +118,12 @@ def show_activity_posted():
 def show_activity_summary():
     return render_template('activity_summary.template.html')
 
-#Donate form = input
+#Donate form
 @app.route('/donate')
 def show_donate_form():
     return render_template('make_donation.template.html')
 
-# Donate form = POST
+# Donate form input
 @app.route('/donate', methods=['POST'])
 def donate_form():
     donor_name = request.form.get('donor_name')
