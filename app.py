@@ -89,7 +89,7 @@ def create_volunteer():
     duration = request.form.get('duration')
     num_volunteer_req = request.form.get('num_volunteer_req')
     prog_date = request.form.get('prog_date')
-    client[DB_NAME].donation.insert_one({
+    client[DB_NAME].volunteer_prog.insert_one({
         'prog_name': prog_name,
         'prog_date': datetime.datetime.strptime(prog_date, "%Y-%m-%d"),
         'prog_desc': prog_desc,
@@ -99,6 +99,38 @@ def create_volunteer():
     })
     flash(f'Your event has been created!')
     return render_template('volunteer.template.html')
+
+# Update event
+@app.route('/volunteer/update/<activity_id>')
+def update_activity(activity_id):
+    activity = client[DB_NAME].volunteer_prog.find_one({
+        "_id": ObjectId
+    })
+    return render_template('update_activity.template.html', activity=activity)
+
+@app.route('/volunteer/update<activity_id>', methods=['POST'])
+def process_update_activity(activity_id):
+    prog_name = request.form.get('prog_name')
+    prog_desc = request.form.get('prog_desc')
+    prog_org = request.form.get('prog_org')
+    duration = request.form.get('duration')
+    num_volunteer_req = request.form.get('num_volunteer_req')
+    prog_date = request.form.get('prog_date')
+    client[DB_NAME].volunteer_prog.insert_one({
+        "_id": ObjectId(activity_id)
+    }, {
+        "$set": {
+            'prog_name': prog_name,
+            'prog_date': datetime.datetime.strptime(prog_date, "%Y-%m-%d"),
+            'prog_desc': prog_desc,
+            'duration': duration,
+            'num_volunteer_req': num_volunteer_req,
+            'prog_org': prog_org
+        }
+    })
+    flash(f'Your event has been updated!')
+    return render_template('volunteer.template.html')
+    
 
 # Show individual volunteers
 @app.route('/volunteer/details/<activity_id>')

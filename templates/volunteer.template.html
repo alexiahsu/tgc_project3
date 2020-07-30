@@ -17,7 +17,7 @@
                     </p>
                 </div>
                 <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
-                    <a href="{{ url_for('show_activity_details', activity_id=v._id) }}" class="primary-btn primary-btn1">Register here</a>
+                    <a href="{{ url_for('show_activity_details', activity_id=v._id) }}" class="primary-btn primary-btn1">Register here</a><br>
                     <a href="{{ url_for('update_activity', activity_id=v._id) }}" class="primary-btn primary-btn1">Update details</a>
                 </div>
                 <div class="middle">
@@ -41,4 +41,6 @@
         </div>
     </div>
 </div>
+<br/>
+<br/>
 {%endblock%}
