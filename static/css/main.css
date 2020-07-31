@@ -1607,6 +1607,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 100%; 
   background-color: #333;
+  color: #fff;
 }
 
 .nav-menu ul li {
@@ -1635,12 +1636,13 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   #nav-menu-container {
     display: none; } }
+
 /* Nav Meu Styling */
 .nav-menu a {
   padding: 6px 10px;
   text-decoration: none;
   display: inline-block;
-  color: #333;
+  color: #459c0f;
   font-weight: 500;
   font-size: 13px;
   text-transform: uppercase;
@@ -1664,7 +1666,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu ul li a {
   padding: 10px;
-  color: #333;
+  color: #459c0f;
   transition: 0.3s;
   display: block;
   font-size: 12px;
@@ -1708,6 +1710,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   z-index: 998;
   background: rgba(0, 0, 0, 0.8);
+  color: #fff;
   left: -260px;
   width: 260px;
   overflow-y: auto;
@@ -1722,7 +1725,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative; }
 
 #mobile-nav ul li a {
-  color: #333;
+  color: #fff;
   font-size: 13px;
   text-transform: uppercase;
   overflow: hidden;
@@ -1765,6 +1768,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   position: fixed;
   background: rgba(0, 0, 0, 0.7);
+  color: #fff;
   display: none; }
 
 /* Mobile Nav body classes */
