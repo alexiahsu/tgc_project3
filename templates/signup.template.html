@@ -1,0 +1,32 @@
+{% extends 'base.template.html' %}
+{% block content %} 
+    <div class="text">
+        <h2>Join our community to host your volunteer activities and receive grants from us!</h2>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-md-offset-4">
+            <form name="signup_form">
+
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Username" required><br/>
+
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password" required><br/>
+
+                <label>Company Email</label>
+                <input type="email" class="form-control" name="org_email" placeholder="Email Address" required><br/>
+
+                <label>Organisation Name</label>
+                <input type="text" class="form-control" name="org_name" placeholder="Organisation Name" required><br/>
+
+                <label>Organisation Description</label>
+                <textarea class="form-control" name="org_desc" placeholder="Describe your organisation's social cause" required></textarea><br/>
+
+                <p class="error error--hidden"></p>
+
+                <input type="submit" value="Sign Up" class="btn btn-primary">
+            </form>
+            <br>
+        </div>
+    </div>
+{% endblock %}

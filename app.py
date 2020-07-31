@@ -13,7 +13,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Connect Mongo
 MONGO_URI = os.environ.get('MONGO_URI')
 client = pymongo.MongoClient(MONGO_URI)
-DB_NAME = "tgc_project3"
+db = client.tgc_project3
 
 # Session Key
 SESSION_KEY = os.environ.get('SESSION_KEY')
@@ -22,19 +22,19 @@ app.secret_key = SESSION_KEY
 # Homepage (open access)
 @app.route('/')
 def index():
-    vol_listings = client[DB_NAME].volunteer_prog.find().limit(1)
+    vol_listings = db.volunteer_prog.find().limit(1)
     return render_template('index.template.html', vol_listings=vol_listings)
 
 # Event list (open access)
 @app.route('/volunteer')
 def show_volunteer():
-    vol_listings = client[DB_NAME].volunteer_prog.find()
+    vol_listings = db.volunteer_prog.find()
     return render_template('volunteer.template.html', vol_listings=vol_listings)
 
 # Individual Event (open access)
 @app.route('/volunteer/details/<activity_id>')
 def show_activity_details(activity_id):
-    vol = client[DB_NAME].volunteer_prog.find_one({
+    vol = db.volunteer_prog.find_one({
         "_id": ObjectId(activity_id)
     })
     return render_template('activity_details.template.html', vol=vol)
@@ -47,7 +47,7 @@ def process_activity_volunteer(activity_id):
     vol_phone = request.form.get('vol_phone')
     vol_desc = request.form.get('vol_desc')
     vol_activity = activity_id
-    client[DB_NAME].volunteer_register.insert_one({
+    db.volunteer_register.insert_one({
     'vol_name': vol_name,
     'vol_dob': datetime.datetime.strptime(vol_dob, "%Y-%m-%d"),
     'vol_desc': vol_desc,
@@ -61,7 +61,7 @@ def process_activity_volunteer(activity_id):
 # Participating organisations (open access)
 @app.route('/organisations')
 def show_organisations():
-    users = client[DB_NAME].users.find()
+    users = db.users.find()
     return render_template('organisations.template.html', users=users)
 
 # Make donations page (open access)
@@ -79,7 +79,7 @@ def donate_form():
     payment_method = request.form.get('payment_method')
     donor_memo = request.form.get('donor_message')
 
-    client[DB_NAME].donation.insert_one({
+    db.donation.insert_one({
     'donor_name': donor_name,
     'donor_dob': datetime.datetime.strptime(donor_dob, "%Y-%m-%d"),
     'donor_email': donor_email,
@@ -90,6 +90,15 @@ def donate_form():
     })
     flash(f'Thank you for donating {donor_amount} to us!')
     return render_template('index.template.html')
+
+# Login/Register Pages
+@app.route('/login')
+def login_page():
+    return render_template('login.template.html')
+
+@app.route('/register')
+def register_page():
+    return render_template('gup.template.html')
 
 # Setting up login function
 from functools import wraps
@@ -104,19 +113,16 @@ def login_required(f):
             return redirect('/')
     return wrap
 
-@app.route('/login')
-def login():
-    return render_template('login.template.html')
-
-@app.route('/register')
-def register():
-    return render_template('register.template.html')
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html')
 
 # Create event volunteer
 @app.route('/volunteer/create')
 @login_required
 def create_volunteer_form():
-    users = client[DB_NAME].users.find_one()
+    users = db.users.find_one()
     return render_template('create_volunteer.template.html', users=users)
 
 @app.route('/volunteer/create', methods=['POST'])
@@ -127,7 +133,7 @@ def create_volunteer():
     duration = request.form.get('duration')
     num_volunteer_req = request.form.get('num_volunteer_req')
     prog_date = request.form.get('prog_date')
-    client[DB_NAME].volunteer_prog.insert_one({
+    db.volunteer_prog.insert_one({
         'prog_name': prog_name,
         'prog_date': datetime.datetime.strptime(prog_date, "%Y-%m-%d"),
         'prog_desc': prog_desc,

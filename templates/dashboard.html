@@ -1,12 +1,13 @@
-{%extends 'base.template.html'%}
+{%extends 'base_account.template.html'%}
 
 {%block content%}
+{{ session['user']['org_name'] }}<br>
 <h1>Volunteer Events</h1>
 <div class="container">
     <div class="row">
-        {% for v in vol_listings%}
-        <br><div class="col-lg-4">
+        <div class="col-lg-4">
             <div class="single-cause">
+                {% for v in vol_listings%}
                 <div class="top">
                     <div class="thumb">
                         <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
@@ -17,7 +18,8 @@
                     </p>
                 </div>
                 <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
-                    <a href="{{ url_for('show_activity_details', activity_id=v._id) }}" class="primary-btn primary-btn1">Register here</a>
+                    <a href="{{ url_for('show_activity_details', activity_id=v._id) }}" class="primary-btn primary-btn1">Register here</a><br>
+                    <a href="#" class="primary-btn primary-btn1">Update details</a>
                 </div>
                 <div class="middle">
                     <div class="d-flex">
@@ -27,7 +29,7 @@
                         </div>
                         <div class="mr-50">
                             <h5><span class="counter">{{v.num_volunteer_req}}</span></h5>
-                            <p>Volunteers Needed</p>
+                            <p>Volunteers Required</p>
                         </div>
                         <div class="">
                             <h5><span class="counter">{{v.vol_date}}</span></h5>
@@ -35,10 +37,11 @@
                         </div>
                     </div>
                 </div>
+                {%endfor%}
             </div>
         </div>
-        {%endfor%}
     </div>
 </div>
-
+<br/>
+<br/>
 {%endblock%}
