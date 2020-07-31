@@ -110,7 +110,7 @@ def login_required(f):
         if 'logged_in' in session:
             return f(*args, **kwargs)
         else:
-            return redirect('/')
+            return redirect('/login')
     return wrap
 
 @app.route('/dashboard')
@@ -126,6 +126,7 @@ def create_volunteer_form():
     return render_template('create_volunteer.template.html', users=users)
 
 @app.route('/volunteer/create', methods=['POST'])
+@login_required
 def create_volunteer():
     prog_name = request.form.get('prog_name')
     prog_desc = request.form.get('prog_desc')
@@ -142,7 +143,7 @@ def create_volunteer():
         'prog_org': prog_org
     })
     flash(f'Your event has been created!')
-    return render_template('volunteer.template.html')
+    return render_template('dashboard.html')
 
 
 # "magic code" -- boilerplate

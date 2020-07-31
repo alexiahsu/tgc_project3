@@ -41,9 +41,9 @@
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a href="{{ url_for('index') }}">Dashboard</a></li>
-						<li class="menu-has-children"><a href="{{ url_for('show_volunteer') }}">Volunteer</a>
+						<li class="menu-has-children"><a href="{{ url_for('show_volunteer') }}">Dashboard</a>
 							<ul>
+								<li><a href="#">Events</a></li>
 								<li><a href="{{ url_for('create_volunteer_form') }}">Create an event</a></li>
 							</ul>
 						</li>
