@@ -124,10 +124,13 @@ def dashboard():
 @app.route('/volunteer/update/<activity_id>')
 @login_required
 def update_event(activity_id):
-    vol = db.volunteer_prog.find_one({
+    event = db.volunteer_prog.find_one({
         "_id": ObjectId(activity_id)
     })
-    return render_template('activity_signup_edit.html', vol=vol)
+
+    all_users = db.users.find()
+
+    return render_template('update_event.html', event=event, all_users=all_users)
 
 @app.route('/volunteer/update/<activity_id>', methods=['POST'])
 @login_required
@@ -151,8 +154,25 @@ def process_update_event(activity_id):
             "prog_date": prog_date
         }
     })
-    return render_template('events_dashboard.html')
+    return redirect(url_for('dashboard'))
 
+# Delete event
+@app.route('/volunteer/delete/<activity_id>')
+@login_required
+def delete_event(activity_id):
+    vol = db.volunteer_prog.find_one({
+        "_id": ObjectId(activity_id)
+    })
+
+    return render_template('confirm_delete_event.html', vol=vol)
+
+@app.route('/volunteer/delete/<activity_id>', methods=['POST'])
+@login_required
+def process_delete_event(activity_id):
+    db.volunteer_prog.remove({
+        "_id": ObjectId(activity_id)
+    })
+    return redirect(url_for('dashboard'))
 
 # Create event volunteer
 @app.route('/volunteer/create')
@@ -179,7 +199,7 @@ def create_volunteer():
         'prog_org': prog_org
     })
     flash(f'Your event has been created!')
-    return render_template('events_dashboard.html')
+    return redirect(url_for('dashboard'))
 
 
 # "magic code" -- boilerplate
