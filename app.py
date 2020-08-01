@@ -32,12 +32,12 @@ def show_volunteer():
     return render_template('volunteer.template.html', vol_listings=vol_listings)
 
 # Individual Event (open access)
-@app.route('/volunteer/details/<activity_id>')
+@app.route('/volunteer/signup/<activity_id>')
 def show_activity_details(activity_id):
     vol = db.volunteer_prog.find_one({
         "_id": ObjectId(activity_id)
     })
-    return render_template('activity_details.template.html', vol=vol)
+    return render_template('activity_signup.html', vol=vol)
 
 @app.route('/volunteer/details/<activity_id>', methods=['POST'])
 def process_activity_volunteer(activity_id):
@@ -98,7 +98,7 @@ def login_page():
 
 @app.route('/register')
 def register_page():
-    return render_template('gup.template.html')
+    return render_template('signup.template.html')
 
 # Setting up login function
 from functools import wraps
@@ -113,17 +113,53 @@ def login_required(f):
             return redirect('/login')
     return wrap
 
+# Events dashboard
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    vol_listings = db.volunteer_prog.find()
+    return render_template('events_dashboard.html', vol_listings=vol_listings)
+
+# Update event
+@app.route('/volunteer/update/<activity_id>')
+@login_required
+def update_event(activity_id):
+    vol = db.volunteer_prog.find_one({
+        "_id": ObjectId(activity_id)
+    })
+    return render_template('activity_signup_edit.html', vol=vol)
+
+@app.route('/volunteer/update/<activity_id>', methods=['POST'])
+@login_required
+def process_update_event(activity_id):
+    prog_name = request.form.get('prog_name')
+    prog_desc = request.form.get('prog_desc')
+    prog_org = request.form.get('prog_org')
+    duration = request.form.get('duration')
+    num_volunteer_req = request.form.get('num_volunteer_req')
+    prog_date = request.form.get('prog_date')
+
+    db.volunteer_prog.update_one({
+        "_id": ObjectId(activity_id)
+    }, {
+        "$set": {
+            "prog_name": prog_name,
+            "prog_desc": prog_desc,
+            "prog_org": prog_org,
+            "duration": duration,
+            "num_volunteer_req": num_volunteer_req,
+            "prog_date": prog_date
+        }
+    })
+    return render_template('events_dashboard.html')
+
 
 # Create event volunteer
 @app.route('/volunteer/create')
 @login_required
 def create_volunteer_form():
-    users = db.users.find_one()
-    return render_template('create_volunteer.template.html', users=users)
+    all_users = db.users.find()
+    return render_template('create_volunteer.template.html', all_users=all_users)
 
 @app.route('/volunteer/create', methods=['POST'])
 @login_required
@@ -143,7 +179,7 @@ def create_volunteer():
         'prog_org': prog_org
     })
     flash(f'Your event has been created!')
-    return render_template('dashboard.html')
+    return render_template('events_dashboard.html')
 
 
 # "magic code" -- boilerplate
