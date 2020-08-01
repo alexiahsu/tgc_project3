@@ -3,23 +3,22 @@
 {%block content%}
 <div class="container">
     <div class="row">
+        {% for u in users%}
         <div class="col-lg-4">
-            {% for u in users%}
             <div class="single-cause">
                 <div class="top">
                     <div class="thumb">
                         <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
                     </div>
-                        <h3>{{u.org_name}}</h3>
-                    <p class="text">
+                        <h3 class="text-title-limit">{{u.org_name}}</h3>
+                    <p class="text text-desc-limit">
                         {{u.org_desc}}
                     </p>
                 </div>
             </div>
-            {%endfor%}
+            <br>
         </div>
+        {%endfor%}
     </div>
 </div>
-<br/>
-<br/>
 {%endblock%}

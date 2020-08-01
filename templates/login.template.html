@@ -1,7 +1,7 @@
 {% extends 'base.template.html'%}
 {% block content %}
     <div class="row justify-content-center">
-        <div class="col-md-7 section-title">
+        <div class="col-md-4 section-title">
             <form name="signin_form">
 
                 <label>Username</label>
@@ -15,7 +15,7 @@
                 <input type="submit" value="Login" class="btn btn-primary">
             </form>
             <div>
-                Don't have an account with us? <a href="{{ url_for('register_page') }}">Sign up here</a>.
+                <br>Don't have an account with us? <a href="{{ url_for('register_page') }}">Sign up here</a>.
             </div>
         </div>
     </div>

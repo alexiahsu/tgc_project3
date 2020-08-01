@@ -139,6 +139,7 @@ h6, .h6 {
 td, th {
   border-radius: 0px; }
 
+
 /**
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
@@ -447,6 +448,20 @@ td, th {
 
 .text-black {
   color: #000; }
+
+.text-desc-limit {
+  max-width: 150ch;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.text-title-limit {
+  max-width: 25ch;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
 
 .transition {
   -webkit-transition: all 0.3s ease 0s;

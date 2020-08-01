@@ -2,7 +2,7 @@
 
 {%block content%}
 <div class="row">
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-4 col-md-6 d-flex align-items-center">
         <div class="single-cause">
             <div class="top">
                 <div class="thumb">
@@ -40,8 +40,8 @@
                 <input type="date" name="vol_dob" class="form-control" required/><br/>
                 <label>Email Address</label>
                 <input type="email" name="vol_email" class="form-control" required/><br/>
-                <label>Contact Number</label>
-                <input type="tel" name="vol_phone" class="form-control" required/><br/>
+                <label>Contact Number (SG Only)</label>
+                <input type="tel" name="vol_phone" class="form-control" placeholder="9123-4562" pattern="[8-9]{1}-[0-9]{3}-[0-9]{4}"/><br/>
                 <label>Tell us about yourself</label>
                 <textarea name="vol_desc" class="form-control" placeholder="Tell us why you want to join this event!"></textarea><br/>
                 <a href="{{ url_for('show_volunteer') }}" class="btn btn-primary">Click to register!</a>
@@ -49,5 +49,4 @@
         </form>
     </div>
 </div>
-<br><br>
 {%endblock%}

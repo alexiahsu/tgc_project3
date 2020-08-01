@@ -3,16 +3,16 @@
 {%block content%}
 <h1>Volunteer Events</h1>
 <div class="container">
-    <div class="row">
+    <div class="row d-flex justify-content-between align-items-stretch">
         {% for v in vol_listings%}
-        <br><div class="col-lg-4">
+        <div class="col-lg-4">
             <div class="single-cause">
                 <div class="top">
                     <div class="thumb">
                         <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
                     </div>
-                        <h3>{{v.prog_name}}</h3>
-                    <p class="text">
+                        <h3 class="text-title-limit">{{v.prog_name}}</h3>
+                    <p class="text text-desc-limit">
                         {{v.prog_desc}}
                     </p>
                 </div>
@@ -36,6 +36,7 @@
                     </div>
                 </div>
             </div>
+            <br>
         </div>
         {%endfor%}
     </div>

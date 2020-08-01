@@ -1,25 +1,23 @@
 {%extends 'base_account.template.html'%}
 
 {%block content%}
-{{ session['user']['org_name'] }}<br>
 <h1>Volunteer Events</h1>
 <div class="container">
-    <div class="row">
+    <div class="row d-flex justify-content-between align-items-stretch">
+        {% for v in vol_listings%}
         <div class="col-lg-4">
             <div class="single-cause">
-                {% for v in vol_listings%}
                 <div class="top">
                     <div class="thumb">
                         <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
                     </div>
-                        <h3>{{v.prog_name}}</h3>
-                    <p class="text">
+                        <h3 class="text-title-limit">{{v.prog_name}}</h3>
+                    <p class="text text-desc-limit">
                         {{v.prog_desc}}
                     </p>
                 </div>
                 <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
-                    <a href="{{ url_for('show_activity_details', activity_id=v._id) }}" class="primary-btn primary-btn1">Register here</a><br>
-                    <a href="#" class="primary-btn primary-btn1">Update details</a>
+                    <a href="{{ url_for('update_event', activity_id=v._id) }}" class="primary-btn primary-btn1">Edit event</a>
                 </div>
                 <div class="middle">
                     <div class="d-flex">
@@ -29,7 +27,7 @@
                         </div>
                         <div class="mr-50">
                             <h5><span class="counter">{{v.num_volunteer_req}}</span></h5>
-                            <p>Volunteers Required</p>
+                            <p>Volunteers Needed</p>
                         </div>
                         <div class="">
                             <h5><span class="counter">{{v.vol_date}}</span></h5>
@@ -37,11 +35,11 @@
                         </div>
                     </div>
                 </div>
-                {%endfor%}
             </div>
+            <br>
         </div>
+        {%endfor%}
     </div>
 </div>
-<br/>
-<br/>
+
 {%endblock%}
