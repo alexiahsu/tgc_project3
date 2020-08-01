@@ -2,10 +2,43 @@
 
 {%block content%}
 <div>
-<h1>Delete: {{vol.prog_name}}</h1>
-    <form method="POST">
-        <input type="submit" value="Confirm" class="btn btn-danger"/>
-        <a href="{{ url_for('update_event', activity_id=vol._id) }}" class="btn btn-primary">Cancel</a>
-    </form>
+<h1>Confirm delete?</h1>
+<div class="row d-flex align-items-stretch">
+    <div class="col-lg-4">
+        <div class="single-cause">
+            <div class="top">
+                <div class="thumb">
+                    <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
+                </div>
+                    <h3 class="text-title-limit">{{vol.prog_name}}</h3>
+                <p class="text text-desc-limit">
+                    {{vol.prog_desc}}
+                </p>
+            </div>
+            <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+                <form method="POST">
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    <a href="{{ url_for('dashboard') }}">Cancel</a>
+                </form>
+            </div>
+            <div class="middle">
+                <div class="d-flex">
+                    <div class="mr-50">
+                        <h5><span class="counter">{{vol.duration}}</span></h5>
+                        <p>Duration</p>
+                    </div>
+                    <div class="mr-50">
+                        <h5><span class="counter">{{vol.num_volunteer_req}}</span></h5>
+                        <p>Volunteers Needed</p>
+                    </div>
+                    <div class="">
+                        <h5><span class="counter">{{vol.vol_date}}</span></h5>
+                        <p>Date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
 </div>
 {%endblock%}
