@@ -7,15 +7,15 @@
         <form method="POST">
             <div class="form-group">
                 <label>Event Name</label>
-                <input type="text" class="form-control" name="prog_name" value="{{vol.prog_name}}" required/><br/>
+                <input type="text" class="form-control" name="prog_name" required value="{{event.prog_name}}"/><br/>
                 <label>Event Date</label>
-                <input type="date" name="prog_date" class="form-control" value="{{vol.prog_date}}" required/><br/>
+                <input type="date" name="prog_date" value="{{event.prog_date}}" class="form-control" required/><br/>
                 <label>Event Details</label>
-                <textarea name="prog_desc" class="form-control" placeholder="{{vol.prog_desc}}"></textarea><br/>
+                <input type="text" name="prog_desc" class="form-control" value="{{event.prog_desc}}" required/><br>
                 <label>Event Duration (Hour)</label>
-                <input type="number" name="duration" min="0" class="form-control" value="{{vol.duration}}" required/><br/>
+                <input type="number" name="duration" min="0" value="{{event.duration}}" class="form-control" required/><br/>
                 <label>Number of Volunteer</label>
-                <input type="number" min="0" name="num_volunteer_req" class="form-control" value="{{vol.num_volunteer_req}}" required/><br/>
+                <input type="number" min="0" name="num_volunteer_req" value="{{event.num_volunteer_req}}" class="form-control" required/><br/>
                 <label>Organisation</label>
                 <select class="custom-select mr-sm-2" name="prog_org">
                     {% for u in all_users %}
@@ -23,7 +23,7 @@
                     {%endfor%}
                 </select><br/><br/>
 
-                <button type="submit" class="btn btn-primary">Create an event!</button>
+                <button type="submit" class="btn btn-primary">Update event</button>
             </div>
         </form>
     </div>
