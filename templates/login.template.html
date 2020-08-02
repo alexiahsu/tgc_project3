@@ -1,9 +1,16 @@
 {% extends 'base.template.html'%}
 {% block content %}
-    <div class="row justify-content-center">
-        <div class="col-md-4 section-title">
+    <div class="row justify-content-center d-flex align-items-center">
+        <div class="col-md-4">
+            <img class="img-fluid w-100 h-100" src="{{ url_for('static', filename='img/login-img.jpg') }}" style="height:300px; width:200px">
+        </div>
+        <div class="col-md-4">
             <form name="signin_form">
 
+                <h2>Welcome admins!</h2>
+                <p>
+                    We are always happy to see you back here. Thank you for graciously taking up the responsibility in managing the volunteering events for our users.
+                </p>
                 <label>Username</label>
                 <input type="text" class="form-control" name="username" placeholder="Username" required><br/>
 
@@ -13,10 +20,11 @@
                 <p class="error error--hidden"></p>
 
                 <input type="submit" value="Login" class="btn btn-primary">
+                <br>
+                <br>Forgot your password? <a href="mailto:hsu.enyang@gmail.com">Send an email to us!</a>
+                <br>Don't have an account with us? <a href="{{ url_for('register_page') }}">Sign up here</a>
             </form>
-            <div>
-                <br>Don't have an account with us? <a href="{{ url_for('register_page') }}">Sign up here</a>.
-            </div>
         </div>
     </div>
+    <br><br>
 {%endblock%}
