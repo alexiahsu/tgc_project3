@@ -690,7 +690,7 @@ td, th {
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s; }
   .primary-btn:hover {
-    color: #61c524;
+    color: #000;
     background-color: transparent;
     border-color: #61c524; }
   .primary-btn.white {
@@ -3590,7 +3590,6 @@ h6 {
 }
 
 .primary-btn:hover {
-  color: #fff;
   border: 1px solid transparent;
 }
 
@@ -3599,7 +3598,6 @@ h6 {
 }
 
 .primary-btn.hover {
-  color: #fff;
   border: 1px solid transparent;
 }
 
