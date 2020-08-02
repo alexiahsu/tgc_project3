@@ -50,7 +50,7 @@ def show_activity_details(activity_id):
     return render_template('activity_signup.html', vol=vol)
 
 
-@app.route('/volunteer/details/<activity_id>', methods=['POST'])
+@app.route('/volunteer/signup/<activity_id>', methods=['POST'])
 def process_activity_volunteer(activity_id):
     vol_name = request.form.get('vol_name')
     vol_dob = request.form.get('vol_dob')
@@ -66,8 +66,8 @@ def process_activity_volunteer(activity_id):
         'vol_activity': vol_activity,
         'vol_phone': vol_phone
     })
-    flash(f'You have registered for the event!')
-    return render_template('volunteer.template.html')
+    flash("Thank you for registering, we will contact you should you be shortlisted for the event!")
+    return redirect(url_for('show_volunteer'))
 
 # Participating organisations (open access)
 
@@ -104,8 +104,8 @@ def donate_form():
         'payment_method': payment_method,
         'donor_memo': donor_memo
     })
-    flash(f'Thank you for donating {donor_amount} to us!')
-    return render_template('index.template.html')
+    flash(f"Thank you for donating {donor_amount} to us! Once we have received the donation, we'll send an email confirmation to you.")
+    return redirect(url_for('index'))
 
 # Login/Register Pages
 
@@ -156,7 +156,8 @@ def update_event(activity_id):
 
     all_users = db.users.find()
 
-    return render_template('update_event.html', event=event, all_users=all_users)
+    return render_template('update_event.html', event=event, all_users=all_users,
+                            cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
 
 
 @app.route('/volunteer/update/<activity_id>', methods=['POST'])
@@ -183,6 +184,7 @@ def process_update_event(activity_id):
             'uploaded_file_url': uploaded_file_url
         }
     })
+    flash(f'The event has been updated!')
     return redirect(url_for('dashboard'))
 
 # Delete event
@@ -204,6 +206,7 @@ def process_delete_event(activity_id):
     db.volunteer_prog.remove({
         "_id": ObjectId(activity_id)
     })
+    flash(f'You have successfully removed the event!')
     return redirect(url_for('dashboard'))
 
 # Create event volunteer
