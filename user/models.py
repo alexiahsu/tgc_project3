@@ -44,7 +44,7 @@ class User:
             }), 400
 
         if db.users.insert_one(user):
-            flash(f'Welcome {username}! Our database has verified your application, congratulations on becoming our administrator!')
+            flash(f'Welcome! Our database has verified your application, congratulations on becoming our administrator!')
             return self.start_session(user)
 
 
