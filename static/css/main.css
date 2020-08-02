@@ -449,15 +449,15 @@ td, th {
 .text-black {
   color: #000; }
 
-.text-desc-limit {
-  max-width: 150ch;
+.text-title-limit {
+  max-width: 25ch;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
 }
 
-.text-title-limit {
-  max-width: 25ch;
+.text-desc-limit {
+  max-width: 150ch;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
@@ -3493,7 +3493,7 @@ h6 {
 }
 
 .top-section-area {
-  background-color: #f40e67;
+  background-color: #FAAF49;
   margin-top: 68px;
 }
 
@@ -3538,14 +3538,14 @@ h6 {
 }
 
 .newsletter-area .primary-btn:hover .lnr {
-  color: #f40e67;
+  color: #FAAF49;
 }
 
 .primary-btn {
   line-height: 40px;
   padding: 0 30px;
   border-radius: 20px;
-  background: #f40e67;
+  background: #FAAF49;
   border: 1px solid #fff;
   color: #222222;
   display: inline-block;
