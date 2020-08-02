@@ -18,12 +18,12 @@
 						for Singapore by volunteering at our organisations or donating to us!
 					</p>
 					<div class="vdo-section">
-						<a href="https://www.youtube.com/watch?v=p29dKpHnPjQ" class="single-charity">
+						<a href="https://youtu.be/m4n4Jk1Dem4" class="single-charity">
 							<img src="{{ url_for('static', filename='img/video-icon.png') }}" alt="">
 						</a>
 						<span>
 							<a href="https://www.youtube.com/watch?v=p29dKpHnPjQ" class="single-charity">
-								Watch our intro video
+								Watch one of our initiatives
 							</a>
 						</span>
 					</div>
@@ -47,7 +47,7 @@
 					<div class="single-cause">
 						<div class="top">
 							<div class="thumb">
-								<img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
+								<img class="c-img img-fluid" src="{{v.uploaded_file_url}}" alt="">
 							</div>
 								<h3>{{v.prog_name}}</h3>
 							<p class="text">
@@ -58,7 +58,7 @@
 							<div class="d-flex">
 								<div class="mr-50">
 									<h5><span class="counter">{{v.duration}}</span></h5>
-									<p>Duration</p>
+									<p>Hour(s)</p>
 								</div>
 								<div class="mr-50">
 									<h5><span class="counter">{{v.num_volunteer_req}}</span></h5>
@@ -111,28 +111,28 @@
 				</div>
 				<div class="col-lg-2 col-md-4 col-sm-6 col-6">
 					<div class="collection-box">
-						<h3 class="color1"><span class="counter">50</span></h3>
+						<h3 class="color1"><span class="counter">{{event_count}}</span></h3>
 						<i class="lnr lnr-arrow-up"></i>
 						<p>Volunteers</p>
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-4 col-sm-6 col-6">
 					<div class="collection-box">
-						<h3><span class="counter">10</span></h3>
+						<h3><span class="counter">{{activity_count}}</span></h3>
 						<i class="lnr lnr-arrow-up"></i>
 						<p>Activities</p>
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-4 col-sm-6 col-6">
 					<div class="collection-box">
-						<h3 class="color3"><span class="counter">5</span></h3>
+						<h3 class="color3"><span class="counter">{{org_count}}</span></h3>
 						<i class="lnr lnr-arrow-up"></i>
 						<p>Organisations</p>
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-4 col-sm-6 col-6">
 					<div class="collection-box">
-						<h3 class="color4">$ <span class="counter">1000</span></h3>
+						<h3 class="color4">$ <span class="counter">{{donations}}</span></h3>
 						<i class="lnr lnr-arrow-up"></i>
 						<p>Donated</p>
 					</div>
@@ -171,33 +171,6 @@
 									<span class="fs-14">SGD</span>
 								</div>
 							</div>
-
-							<div class="row">
-								<div class="col-lg-6 col-md-6">
-									<div class="donation-type">
-										<div class="form-check">
-											<label class="form-check-label">
-												<input type="radio" class="form-check-input" name="optradio">
-												General
-											</label>
-										</div>
-										<p>Donate to our general fund and we'll distribute it for you</p>
-									</div>
-								</div>
-
-								<div class="col-lg-6 col-md-6">
-									<div class="donation-type">
-										<div class="form-check">
-											<label class="form-check-label">
-												<input type="radio" class="form-check-input" name="optradio">
-												Specific
-											</label>
-										</div>
-										<p>Donate to a specific organisation that you'd like to support</p>
-									</div>
-								</div>
-							</div>
-
 							<a href="{{ url_for('show_donate_form') }}" class="primary-btn w-100">Donate Now</a>
 						</form>
 					</div>

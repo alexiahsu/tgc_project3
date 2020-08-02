@@ -1,12 +1,12 @@
 {%extends 'base.template.html'%}
 
 {%block content%}
-<div class="row">
-    <div class="col-lg-4 col-md-6 d-flex align-items-center">
+<div class="row d-flex align-items-center">
+    <div class="col-lg-4 col-md-6">
         <div class="single-cause">
             <div class="top">
                 <div class="thumb">
-                    <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
+                    <img class="c-img img-fluid" src="{{vol.uploaded_file_url}}" alt="">
                 </div>
                     <h3>{{vol.prog_name}}</h3>
                 <p class="text">
@@ -50,8 +50,9 @@
                 <textarea name="vol_desc" class="form-control" placeholder="Tell us why you want to join this event!"></textarea><br/>
 
                 <button type="submit" class="btn btn-primary">Register for event!</button>
+                <a href="{{ url_for('dashboard')}}">Go back</a>
             </div>
         </form>
     </div>
-</div>
+</div><br>
 {%endblock%}

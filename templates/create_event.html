@@ -1,9 +1,19 @@
 {% extends 'base_account.template.html'%}
 
 {%block content%}
-<div class="row justify-content-center">
-    <div class="col-md-7 section-title">
-        <h2>Create an event</h2>
+<div class="row justify-content-center  d-flex align-items-center">  
+    <div class="col-md-6 col-md-offset-6">
+        <img class="img-fluid w-100 h-100" src="{{ url_for('static', filename='img/create-event-img.jpg') }}" style="height:300px; width:200px">
+        <div class="text">
+            <h2>Thank you for creating opportunities!</h2>
+            <p>
+                We're thrilled to have you add volunteer opportunities in our community. 
+            </p>
+            Should you have any questions, feel free to <a href="mailto:hsu.enyang@gmail.com">contact us</a>!
+        </div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-4">
         <form method="POST">
             <div class="form-group">
                 <label>Event Name</label>
@@ -13,13 +23,13 @@
                 <input type="date" name="prog_date" class="form-control" required/><br/>
                 
                 <label>Event Details</label>
-                <textarea name="prog_desc" class="form-control" placeholder="Entering specific details and requirements help with boosting registrations"></textarea><br/>
+                <textarea name="prog_desc" class="form-control" placeholder="Entering specific details and requirements will help boost registrations"></textarea><br/>
                 
                 <label>Event Duration (Hour)</label>
-                <input type="number" name="duration" min="0" class="form-control" required/><br/>
+                <input type="number" name="duration" min="1" class="form-control" required/><br/>
                 
                 <label>Number of Volunteer</label>
-                <input type="number" min="0" name="num_volunteer_req" class="form-control" required/><br/>
+                <input type="number" min="1" name="num_volunteer_req" class="form-control" required/><br/>
                 
                 <label>Organisation</label>
                 <select class="custom-select mr-sm-2" name="prog_org">
@@ -30,16 +40,17 @@
 
                 <label>Upload Event Image</label>
                 <div>
-                    <a id="upload_widget" class="cloudinary-button">Upload files</a>
+                    <a id="upload_widget" class="btn btn-primary" style="color: white;">Add image</a>
                     <input type="hidden" id="uploaded_file_url" name="uploaded_file_url"/>
                     <br/>
-                    <p id="uploaded_file_display" style="display:none">Uploaded File Name:<span id="uploaded_file_name"></span></p>
+                    <p id="uploaded_file_display" style="display:none">Uploaded File Name: <span id="uploaded_file_name"></span></p>
                 </div>  
                 <br>
-                <button type="submit" class="btn btn-primary">Create an event!</button>
-                <a href="{{ url_for('dashboard') }}">Cancel</a>
+                <button type="submit" class="btn btn-primary">Create event now!</button>
+                <a href="{{ url_for('dashboard') }}">Maybe next time</a>
             </div>
         </form>
+        <br>
     </div>
 </div>
 {%endblock%}

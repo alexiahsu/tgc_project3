@@ -1,9 +1,37 @@
 {% extends 'base_account.template.html'%}
 
 {%block content%}
-<div class="row justify-content-center">
-    <div class="col-md-7 section-title">
-        <h2>Create an event</h2>
+<div class="row d-flex align-items-center">
+    <div class="col-lg-4 col-md-6">
+        <div class="single-cause">
+            <div class="top">
+                <div class="thumb">
+                    <img class="c-img img-fluid" src="{{event.uploaded_file_url}}" alt="">
+                </div>
+                    <h3>{{event.prog_name}}</h3>
+                <p class="text">
+                    {{event.prog_desc}}
+                </p>
+            </div>
+            <div class="middle">
+                <div class="d-flex">
+                    <div class="mr-50">
+                        <h5><span class="counter">{{event.duration}}</span></h5>
+                        <p>Duration</p>
+                    </div>
+                    <div class="mr-50">
+                        <h5><span class="counter">{{event.num_volunteer_req}}</span></h5>
+                        <p>Volunteers Needed</p>
+                    </div>
+                    <div class="">
+                        <h5><span class="counter">{{event.vol_date}}</span></h5>
+                        <p>Date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
         <form method="POST">
             <div class="form-group">
                 <label>Event Name</label>
@@ -22,21 +50,20 @@
                         <option value="{{u._id}}">{{u.org_name}}</option>
                     {%endfor%}
                 </select><br/><br/>
-                <label>Upload Event Image</label>
+                <label>Update Event Image</label>
                 <div>
-                    <a id="upload_widget" class="cloudinary-button">Upload files</a>
+                    <a id="upload_widget" class="btn btn-primary" style="color: white;">Add image</a>
                     <input type="hidden" id="uploaded_file_url" name="uploaded_file_url"/>
-                    <br/>
-                    <p id="uploaded_file_display" style="display:none">Uploaded File Name:<span id="uploaded_file_name"></span></p>
+                    <p id="uploaded_file_display" style="display:none">Uploaded File Name: <span id="uploaded_file_name"></span></p>
                 </div>
                 <br>
-                <br>
-                <button type="submit" class="btn btn-primary">Update event</button><br>
+                <button type="submit" class="btn btn-primary">Update event</button>
                 <a href="{{ url_for('dashboard') }}">Cancel</a>
             </div>
         </form>
     </div>
 </div>
+<br>
 {%endblock%}
 
 {%block js%}
