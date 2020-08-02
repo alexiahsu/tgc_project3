@@ -40,7 +40,7 @@ def index():
             }
         }
     }])
-    return render_template('index.template.html', vol_listings=vol_listings,
+    return render_template('index.html', vol_listings=vol_listings,
                            event_count=event_count, activity_count=activity_count,
                            org_count=org_count, donations=donations)
 
@@ -88,14 +88,14 @@ def process_activity_volunteer(activity_id):
 @app.route('/organisations')
 def show_organisations():
     users = db.users.find()
-    return render_template('organisations.template.html', users=users)
+    return render_template('organisations.html', users=users)
 
 # Make donations page (open access)
 
 
 @app.route('/donate')
 def show_donate_form():
-    return render_template('make_donation.template.html')
+    return render_template('make_donation.html')
 
 
 @app.route('/donate', methods=['POST'])
@@ -130,7 +130,7 @@ from functools import wraps
 
 @app.route('/login')
 def login_page():
-    return render_template('login.template.html')
+    return render_template('login.html')
 
 
 @app.route('/register')
