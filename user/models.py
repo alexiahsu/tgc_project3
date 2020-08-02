@@ -43,6 +43,14 @@ class User:
                 "error": "Username already in use"
             }), 400
 
+        #Check for existing org name
+        if db.users.find_one({
+            "org_name": user['org_name']
+        }):
+            return jsonify({
+                "error": "Username already in use"
+            }), 400
+
         if db.users.insert_one(user):
             flash(f'Welcome! Our database has verified your application, congratulations on becoming our administrator!')
             return self.start_session(user)

@@ -8,10 +8,10 @@
         <div class="single-cause">
             <div class="top">
                 <div class="thumb">
-                    <img class="c-img img-fluid" src="{{ url_for('static', filename='img/causes/c1.jpg') }}" alt="">
+                    <img class="c-img img-fluid" src="{{vol.uploaded_file_url}}" alt="">
                 </div>
                     <h3 class="text-title-limit">{{vol.prog_name}}</h3>
-                <p class="text text-desc-limit">
+                <p class="text">
                     {{vol.prog_desc}}
                 </p>
             </div>

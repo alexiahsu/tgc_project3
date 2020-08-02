@@ -3,18 +3,19 @@
 {%block content%}
 <div class="container">
     <h2>Our participating organisations:</h2>
-    <div class="row">
+    <div class="row d-flex justify-content-left align-items-center">
         {% for u in users%}
-        <div class="col-lg-4">
+        <div class="col-lg-4 justify-content-center">
             <div class="single-cause">
                 <div class="top">
                     <div class="thumb">
-                        <img class="c-img img-fluid" src="{{u.uploaded_file_url}}" style="height:200px; width: 200px;">
+                        <img class="c-img img" src="{{u.uploaded_file_url}}" style="width:200px; height:200px;">
                     </div>
                         <h3 class="text-title-limit">{{u.org_name}}</h3>
-                    <p class="text text-desc-limit">
+                    <p class="text-desc-limit">
                         {{u.org_desc}}
                     </p>
+                    <a href="mailto:{{u.org_email}}" class="primary-btn primary-btn1">Contact</a>
                 </div>
             </div>
             <br>

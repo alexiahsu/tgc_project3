@@ -23,8 +23,9 @@
                     <label>Donation Amount</label>
                     <input type="number" pattern="^\d*(\.\d{0,2})?$" min="1" step="1" class="form-control" name="donor_amount" required/><br/>
                     <label>Remarks</label>
-                    <textarea name="donor_message" class="form-control" placeholder="You may share your wishlist with us!"></textarea><br/>
+                    <textarea name="donor_message" class="form-control" placeholder="You may share your wishlist with us!" required></textarea><br/>
                     <button type="submit" class="btn btn-primary">Make your donation!</button>
+                    <a href="{{ url_for('index') }}">Maybe next time</a>
                 </div>
             </form>
         </div>

@@ -32,17 +32,10 @@ def index():
     event_count = db.volunteer_register.count()
     activity_count = db.volunteer_prog.count()
     org_count = db.users.count()
-    donations = db.donations.aggregate([ {
-        "$group": {
-            "_id": "_id",
-            "totalDonations": {
-                "$sum": "$donor_amount"
-            }
-        }
-    }])
+    donor_count = db.donation.count()
     return render_template('index.html', vol_listings=vol_listings,
                            event_count=event_count, activity_count=activity_count,
-                           org_count=org_count, donations=donations)
+                           org_count=org_count, donor_count=donor_count)
 
 # Event list (open access)
 
@@ -105,7 +98,6 @@ def donate_form():
     donor_email = request.form.get('donor_email')
     donor_amount = request.form.get('donor_amount')
     donor_phone = request.form.get('donor_phone')
-    payment_method = request.form.get('payment_method')
     donor_memo = request.form.get('donor_message')
 
     db.donation.insert_one({
@@ -114,7 +106,6 @@ def donate_form():
         'donor_email': donor_email,
         'donor_phone': donor_phone,
         'donor_amount': donor_amount,
-        'payment_method': payment_method,
         'donor_memo': donor_memo
     })
     flash(
