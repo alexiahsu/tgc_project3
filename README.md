@@ -32,15 +32,27 @@ The navigation bar is responsive across small, medium and large screens adding. 
 
 Roboto [fonts](https://fonts.google.com/?selection.family=Roboto|Rubik&query=rub) was chosen for this website because of it is inviting to users, and since most people use chrome - Roboto would be a familiar font to them.
 
-The [home](https://sgvolunteer.herokuapp.com/) page was designed to be sleek and straightforward to use. The first banner consists of a carousel with pictures of happy children and active elderly, to inspire users to achieve these outcomes by volunteering on the platform. Also, a video showcasing one of the platform's initiatives is immediately available upon clicking. The next row attempts to engage the right audience by informing the things that they are able to achieve by using the platform. Both of which consists of a direct link should they be interested. "Our community is growing" showcases a brief summary of the activity thus far, which serves as a motivating factor, and includes javascript to create a little fun in the numbers. In the next row, users who are do not fall in either of the above category can still choose to support by donating, in which the button will bring them directly to the donation form page. At the bottom, which is a fixed layout across all templates, is a brief summary of what the webpage does and links to social media.
+The [Home](https://sgvolunteer.herokuapp.com/) page was designed to be sleek and straightforward to use. The first banner consists of a carousel with pictures of happy children and active elderly, to inspire users to achieve these outcomes by volunteering on the platform. Also, a video showcasing one of the platform's initiatives is immediately available upon clicking. The next row attempts to engage the right audience by informing the things that they are able to achieve by using the platform. Both of which consists of a direct link should they be interested. "Our community is growing" showcases a brief summary of the activity thus far, which serves as a motivating factor, and includes javascript to create a little fun in the numbers. In the next row, users who are do not fall in either of the above category can still choose to support by donating, in which the button will bring them directly to the donation form page. At the bottom, which is a fixed layout across all templates, is a brief summary of what the webpage does and links to social media.
 
-The [join an event](https://sgvolunteer.herokuapp.com/volunteer) page lists all the volunteer opportunities offered on the platform. To avoid overcrowding, the titles and texts have been truncated and figures of the duration and number of volunteers required are available. Users who are interested can click on 'register here', which will bring them to the activity sign-up page.
+The [Volunteer > Join an event](https://sgvolunteer.herokuapp.com/volunteer) page lists all the volunteer opportunities offered on the platform. To avoid overcrowding, the titles and texts have been truncated and figures of the duration and number of volunteers required are available. Users who are interested can click on 'register here', which will bring them to the activity sign-up page.
 
-Next [create an event (for non-account users)](https://sgvolunteer.herokuapp.com/register) is gated and only users who are logged in will be brought to the actual event creation page, where they are able to fill up the form (will be further elaborated later). For non-account users, they will be brought directly to the registration page where users, who intended to create an opportunity, can become administrators of the platform.
+Next [Volunteer > Create an event (for non-account users)](https://sgvolunteer.herokuapp.com/register) is gated and only users who are logged in will be brought to the actual event creation page, where they are able to fill up the form (will be further elaborated later). For non-account users, they will be brought directly to the registration page where users, who intended to create an opportunity, can become administrators of the platform.
 
-In [organisations]()
+[Organisations](https://sgvolunteer.herokuapp.com/organisations) shows the list of participating charity organisations , who are administrators of the platform. It showcases their logo, organisation name and a brief description of what they do.
 
-Lastly, amidst all the statistics and information, users are presented with 3 most recently published [articles](https://alexiahsu.github.io/tgc_project2/#articles) which are segmented into local and global news. This allows users to stay aware both locally and as a global citizen.
+For [Donate], users can either access this page from homepage or the navigation bar. Users are required to fill up the relevant details before an "email" will be sent to them on payment methods.
+
+[Join us > Log in](https://sgvolunteer.herokuapp.com/login) brings users to the login page. Should they forget the password, they can send an email to request for support. For new users, they may be navigated to the registration page should they be keen on becoming an administrator.
+
+[Join us > Register](https://sgvolunteer.herokuapp.com/register) is an easy-to-fill form for charity organisations to apply as administators. Once "approved", users will have access to edit the dashboard (aka Join an event) by updating or removing events.
+
+[About us](https://sgvolunteer.herokuapp.com/) simply brings users to the bottom of the page which describes the aim of the platform and links to social media
+
+[(For account users) Dashboard > Events](https://sgvolunteer.herokuapp.com/dashboard) is the same view as "Join an event" but with edit and remove buttons. This allow administrators to update the details or delete ones that are no longer valid.
+
+[(For account users) Dashboard > Create an event](https://sgvolunteer.herokuapp.com/volunteer/create) allows users to submit a form for the event to be showcased on the dashboard for both account and non-account users.
+
+[(For account users) Logout] helps to end the session for users who have logged into the platform
 
 ## Wireframes
 
@@ -50,29 +62,25 @@ Wireframes were created on pen and paper to help visualise the look and feel of 
 
 Objectives:
 1. To build an elegant and easy-to-navigate webpage for users of any background
-2. Provide understandable, accurate and crucial information on covid-19.
-3. A lens through the local scene and the global situation
-4. Captivate audience with interactive activities that help enhances knowledge about global situation
-5. Provide short but effective information on symptoms and prevention
-6. To showcase my current skills of utilising CSS3, HTML5, Javascript, Google Charts API and other tools (see credits)
+2. Provide easy-to-apply and easy-to-create volunteer opportunities
+3. Captivate audience with interesting data
+4. Provide effective ways to contribute to society
+5. To showcase my current skills of utilising CSS3, HTML5, Javascript, MongoDB and Python (see credits)
 
 
 ## Features
 
-- Data is available for charts and maps upon mouse hover
-- Pool in covid-19 data for both local and global situation
-- Table row will be highlighted upon hover to help users keep track of where they are navigating
-- Navigation bar remains sleek and clean to free users of distraction
-- Search through covid19 statistics across all countries or simply skip the step with 'collapse all'
-- Geochart is color-coded to level of severity - users can, at a glance, understand which areas are spreading like wildfire.
-- 
+- Webpage retrieves information from the database which is dependent on what the user enters
+- Easy-to-fill forms to volunteer and donate to society
+- User authentication to differentiate volunteers and organisations
+- CRUD for administrators posting volunteer opportunities
+- Javascript counters that help boost visualisation and interactivity
 
 ## Future features
 
-- To design a form for users to enter details and provide donations
-- Have a 'wall of fame' for donors - this is to entice other users to join the cause
-- Design a centraldatabase to collate the amount of money raised and provide real-time updates about where the resources are going
-- Have live testimonies from people who had contracted covid19 - share their stories to inspire others to join in this battle against the invisible enemy.
+- Differentiated user authentication for administrators (i.e. an admin can only delete his/her own post)
+- Front-end payment system (instead of email confirmation)
+- API call to do verification fo  applicants
 - 
 ## Technologies Used
 
@@ -82,14 +90,16 @@ Here are a list of programming languages, frameworks, technologies and tools use
 - HTML5
 - JQuery
 - JavaScript
-- [Google Charts](https://developers.google.com/chart)
-  - Used for geocharts, barcharts and ratio charts.
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Used as the IDE to write the codes for this project
 - [Templated.co](https://templated.co/industrious)
   - Adapted CSS from here
 - [Bootstrap 4.4.0 framework](https://getbootstrap.com/)
   - Used for back-up in case manual CSS did not work
+- [Cloudinary](https://cloudinary.com/)
+  - Image upload
+- [Heroku](https://www.heroku.com/)
+  - App deployment
 - [Google Fonts](https://fonts.google.com/)
   - Used 'Roboto'
   - Used for version control to commit to Github
@@ -121,13 +131,13 @@ Devices and browesers:
   - Safari
 
 ## Issue
-Should the interactive charts ((1) Bar chart, (2) Donut chart, (3) Geochart) not work, kindly refer to live demo and code for proof of usage.
+Should the javascript or user authentication not work in deployment in heroku, kindly refer to live demo and code for proof of usage.
 
 ## Deployment
 
-Git was used for version control and [Github](<(https://github.com)>) hosts the repository for all commits
+Git was used for version control and [Github](https://github.com)) hosts the repository for all commits
 
-Please click on [Covid-19](https://alexiahsu.github.io/tgc_project2/) to find the deployed website, using Github pages. The pages will automatically be updated upon new commits to the master branch
+[Heroku](https://www.heroku.com/) was used for app deployment 
 
 ### How to save the project to a local computer
 
@@ -135,40 +145,52 @@ These are steps to follow if you would like to run this code locally:
 
 #### Download
 
-1. Download [this repository](https://github.com/alexiahsu/tgc_project2/) from the Github repository
+##### GitHub
+1. Download [this repository](https://github.com/alexiahsu/tgc_project3) from the Github repository
 2. At the right hand side, click on green button _Clone or download_ then _Download ZIP_. The repository will automatically be downloaded into a ZIP folder on your computer
 3. Uncompress the ZIP folder
 4. Double click on the HTML file to open with the default browser of your computer or right click on the HTML file to choose a preferred browser
 5. The rest of the files are available if you would like to make changes to the website according to your liking
 
-#### Clone
+##### GitPod
+1. Open the codes from [this repository](https://github.com/alexiahsu/tgc_project3) on GitPod
+2. Type in console `pip3 install -r requirements.txt`
+3. Type in console `python3 app.py` to launch the app on local host
 
-1. Clone this repository from the Github repository from [(https://github.com/alexiahsu/tgc_project2/)](<(https://github.com/alexiahsu/tgc_project2/)>)
+##### Heroku
+1. Access the app [https://sgvolunteer.herokuapp.com/](https://sgvolunteer.herokuapp.com/)
+
+#### Clone and Launch in IDE Visual Studio Code
+
+1. Clone this repository from the Github repository from [(https://github.com/alexiahsu/tgc_project2/)](https://github.com/alexiahsu/tgc_project2/)
 2. At the right hand side, click on green button _Clone or download_ then copy the URL shown in the input box
 3. In your IDE of choice, paste `git clone https://github.com/alexiahsu/tgc_project2/.git` into your terminal.
 4. This repository will automatically be cloned into a folder on your computer
-5. To break the connection with this Github repository, enter `git remote rm origin` into your terminal
+5. Type in console `pip3 install -r requirements.txt`
+6. Type in console `flask run` to launch the app on local host
+7. To break the connection with this Github repository, enter `git remote rm origin` into your terminal
 
 ## Credits
 
-Adapted data presentation from [COVID-19 Dashboard](https://covid-dashboards.web.app/)
+Adapted CSS styles from [Free-CSS](https://www.free-css.com/free-css-templates)
 
-Adapted CSS styles from [Industrious](https://templated.co/industrious)
+### Javascript
 
-### Codes
-
-- [Smooth scrolling](https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section1) 
-
-### Api Files
-
-1. [News Api](https://newsapi.org/docs)
-2. [Covid-19 Api](https://api.covid19api.com/)
-3. [Google Charts](https://developers.google.com/chart)
+- [Easing](https://jqueryui.com/easing/)
+- [Hoverintent](https://briancherne.github.io/jquery-hoverIntent/)
+- [JQuery Counterup](https://www.npmjs.com/package/jquery.counterup)
+- [JQuery Magnific Popup](https://dimsemenov.com/plugins/magnific-popup/)
+- [JQuery Nice Select](https://hernansartorio.com/jquery-nice-select/)
+- [JQuery Sticky](http://stickyjs.com/)
+- [Owl Carousel](https://owlcarousel2.github.io/OwlCarousel2/)
+- [Slick JS](https://kenwheeler.github.io/slick/)
+- [Superfish JS](https://superfish.joelbirch.design/examples/)
+- [Userauth](https://github.com/LukePeters/User-Login-System-Tutorial)
+- [Waypoint JS](http://imakewebthings.com/waypoints/)
 
 ### Images
 
 Images
 
-1. https://unsplash.com/s/photos/prevent
-2. https://unsplash.com/s/photos/social-distancing
-3. https://unsplash.com/s/photos/covid19
+1. https://unsplash.com/s/photos/elderly
+2. https://unsplash.com/s/photos/children
