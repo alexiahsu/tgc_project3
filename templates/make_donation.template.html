@@ -1,39 +1,33 @@
 {%extends 'base.template.html'%}
 
 {%block content%}
-<!-- Start Donations Form -->
-    <div class="row justify-content-center">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 d-flex align-items-center">
-                <img class="img-fluid" src="{{ url_for('static', filename='img/events/e1.jpg') }}" alt="">
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <h2>Make a Donation</h2>
-                <form method="POST" name="donate_form">
-                    <div class="form-group">
-                        <label>Full Name (as per NRIC)</label>
-                        <input type="text" class="form-control" name="donor_name" required/><br/>
-                        <label>Date of Birth</label>
-                        <input type="date" name="donor_dob" class="form-control" required/><br/>
-                        <label>Email Address</label>
-                        <input type="email" name="donor_email" class="form-control" required/><br/>
-                        <label>Contact Number (SG Only)</label>
-                        <input type="tel" name="donor_phone" class="form-control" placeholder="9123-4562" pattern="[8-9]{1}-[0-9]{3}-[0-9]{4}"/><br/>
-                        <label>Donation Amount:</label>
-                        <input type="number" pattern="^\d*(\.\d{0,2})?$" min="0" step="0.01" class="form-control" name="donor_amount" required/><br/>
-                        <label>Payment Mode</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="payment_method">
-                            <option selected>Select to see instructions</option>
-                            <option value="Wire Transfer">Wire Transfer</option>
-                            <option value="PayNow/PayLah">PayNow/PayLah</option>
-                        </select><br/><br/>
-                        <label>Remarks</label>
-                        <textarea name="donor_message" class="form-control" placeholder="You may share your wishlist with us!"></textarea><br/>
-                        <button type="submit" class="btn btn-primary">Make your donation!</button>
-                    </div>
-                </form>
-            </div>
+    <div class="row d-flex align-items-center">
+        <div class="col-lg-6 col-md-6">
+            <img class="img-fluid w-100 h-100" src="{{ url_for('static', filename='img/donations-img.jpg') }}" alt="">
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <h3>Thank you for your donation!</h3>
+            <p>
+                Kindly fill up this form with your donation details. We'll verify your info before sending the invoice and payment details to your inbox.
+            </p>
+            <form method="POST" name="donate_form">
+                <div class="form-group">
+                    <label>Full Name (as per NRIC)</label>
+                    <input type="text" class="form-control" name="donor_name" required/><br/>
+                    <label>Date of Birth</label>
+                    <input type="date" name="donor_dob" class="form-control" required/><br/>
+                    <label>Email Address</label>
+                    <input type="email" name="donor_email" class="form-control" required/><br/>
+                    <label>Contact Number (SG Only)</label>
+                    <input type="tel" name="donor_phone" class="form-control" placeholder="9123-4562" pattern="[8-9]{1}[0-9]{3}[0-9]{4}"/><br/>
+                    <label>Donation Amount</label>
+                    <input type="number" pattern="^\d*(\.\d{0,2})?$" min="1" step="1" class="form-control" name="donor_amount" required/><br/>
+                    <label>Remarks</label>
+                    <textarea name="donor_message" class="form-control" placeholder="You may share your wishlist with us!"></textarea><br/>
+                    <button type="submit" class="btn btn-primary">Make your donation!</button>
+                </div>
+            </form>
         </div>
     </div>
-
+    <br>
 {%endblock%}

@@ -161,7 +161,6 @@ def dashboard():
 
 # Update event
 
-
 @app.route('/volunteer/update/<activity_id>')
 @login_required
 def update_event(activity_id):

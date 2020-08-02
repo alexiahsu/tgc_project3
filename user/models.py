@@ -20,7 +20,8 @@ class User:
             "org_email": request.form.get('org_email'),
             "password": request.form.get('password'),
             "org_name": request.form.get('org_name'),
-            "org_desc": request.form.get('org_desc')
+            "org_desc": request.form.get('org_desc'),
+            "uploaded_file_url": request.form.get('uploaded_file_url')
         }
 
         #Encyrpt password

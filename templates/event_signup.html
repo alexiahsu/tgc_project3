@@ -23,15 +23,15 @@
                         <h5><span class="counter">{{vol.num_volunteer_req}}</span></h5>
                         <p>Volunteers Needed</p>
                     </div>
-                    <div class="">
-                        <h5><span class="counter">{{vol.vol_date}}</span></h5>
-                        <p>Date</p>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-lg-8">
+        <h3>Thank you for indicating your interest to volunteer!</h3>
+        <p>
+            Kindly fill up this form with your details. We'll verify your info and update you once you've been shortlisted.
+        </p>
         <form method="POST">
             <div class="form-group">
                 <label>Full Name</label>
@@ -50,7 +50,7 @@
                 <textarea name="vol_desc" class="form-control" placeholder="Tell us why you want to join this event!"></textarea><br/>
 
                 <button type="submit" class="btn btn-primary">Register for event!</button>
-                <a href="{{ url_for('dashboard')}}">Go back</a>
+                <a href="{{ url_for('show_events')}}">Go back</a>
             </div>
         </form>
     </div>

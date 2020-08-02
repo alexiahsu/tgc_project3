@@ -47,7 +47,7 @@
 								<li><a href="{{ url_for('create_event_form') }}">Create an event</a></li>
 							</ul>
 						</li>
-						<li class="menu-has-children"><a href="/signout">Logout</a></li>
+						<li><a href="/signout">Logout</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -68,6 +68,7 @@
 				</ul>
 			{% endif %}
 			{% endwith %}
+			<br>
 			{%block content%}
 			{%endblock%}
 		</div>
