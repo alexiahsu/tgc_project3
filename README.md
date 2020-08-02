@@ -172,7 +172,11 @@ These are steps to follow if you would like to run this code locally:
 
 ## Credits
 
-Adapted CSS styles from [Free-CSS](https://www.free-css.com/free-css-templates)
+### CSS
+- Adapted CSS styles from [Free-CSS](https://www.free-css.com/free-css-templates)
+- [Font-awesome](https://fontawesome.com/)
+- [Linear icons](https://linearicons.com/)
+
 
 ### Javascript
 
