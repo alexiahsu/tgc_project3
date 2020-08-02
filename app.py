@@ -29,15 +29,28 @@ app.secret_key = SESSION_KEY
 @app.route('/')
 def index():
     vol_listings = db.volunteer_prog.find().limit(1)
-    return render_template('index.template.html', vol_listings=vol_listings)
+    event_count = db.volunteer_register.count()
+    activity_count = db.volunteer_prog.count()
+    org_count = db.users.count()
+    donations = db.donations.aggregate([ {
+        "$group": {
+            "_id": "_id",
+            "totalDonations": {
+                "$sum": "$donor_amount"
+            }
+        }
+    }])
+    return render_template('index.template.html', vol_listings=vol_listings,
+                           event_count=event_count, activity_count=activity_count,
+                           org_count=org_count, donations=donations)
 
 # Event list (open access)
 
 
 @app.route('/volunteer')
-def show_volunteer():
+def show_events():
     vol_listings = db.volunteer_prog.find()
-    return render_template('volunteer.template.html', vol_listings=vol_listings)
+    return render_template('events.html', vol_listings=vol_listings)
 
 # Individual Event (open access)
 
@@ -47,7 +60,7 @@ def show_activity_details(activity_id):
     vol = db.volunteer_prog.find_one({
         "_id": ObjectId(activity_id)
     })
-    return render_template('activity_signup.html', vol=vol)
+    return render_template('event_signup.html', vol=vol)
 
 
 @app.route('/volunteer/signup/<activity_id>', methods=['POST'])
@@ -67,7 +80,7 @@ def process_activity_volunteer(activity_id):
         'vol_phone': vol_phone
     })
     flash("Thank you for registering, we will contact you should you be shortlisted for the event!")
-    return redirect(url_for('show_volunteer'))
+    return redirect(url_for('show_events'))
 
 # Participating organisations (open access)
 
@@ -104,13 +117,15 @@ def donate_form():
         'payment_method': payment_method,
         'donor_memo': donor_memo
     })
-    flash(f"Thank you for donating {donor_amount} to us! Once we have received the donation, we'll send an email confirmation to you.")
+    flash(
+        f"Thank you for donating ${donor_amount} to us! Once we have received the donation, we'll send an email confirmation and invoice to you.")
     return redirect(url_for('index'))
 
-# Login/Register Pages
 
 from user import routes
 from functools import wraps
+
+# Login/Register Pages
 
 
 @app.route('/login')
@@ -120,7 +135,7 @@ def login_page():
 
 @app.route('/register')
 def register_page():
-    return render_template('signup.template.html')
+    return render_template('register.html', cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
 
 
 # Setting up login function
@@ -157,7 +172,7 @@ def update_event(activity_id):
     all_users = db.users.find()
 
     return render_template('update_event.html', event=event, all_users=all_users,
-                            cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
+                           cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
 
 
 @app.route('/volunteer/update/<activity_id>', methods=['POST'])
@@ -214,9 +229,9 @@ def process_delete_event(activity_id):
 
 @app.route('/volunteer/create')
 @login_required
-def create_volunteer_form():
+def create_event_form():
     all_users = db.users.find()
-    return render_template('create_volunteer.template.html', all_users=all_users,
+    return render_template('create_event.html', all_users=all_users,
                            cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
 
 
